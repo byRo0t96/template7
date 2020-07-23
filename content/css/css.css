@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial;
+  padding: 20px;
+  background: #f1f1f1;
+}
+body::after {
+  content: "";
+  background: url('../img/Ro0t-96_v.3.png');
+  opacity: 0.05;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.header {
+  padding: 30px;
+  font-size: 40px;
+  text-align: center;
+  background: white;
+}
+.leftcolumn {   
+  float: left;
+  width: 75%;
+}
+.rightcolumn {
+  float: left;
+  width: 25%;
+  padding-left: 20px;
+}
+.fakeimg {
+  /*background-color: #fbfbfb;*/
+  width: 100%;
+  /*padding: 20px;*/
+  /*height:200px;*/
+}
+.img{
+	max-height: 100%;
+	max-width: 100%;
+}
+.center{
+	text-align: center;
+}
+.card {
+   background-color: white;
+   padding: 20px;
+   margin-top: 20px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.footer {
+  padding: 20px;
+  text-align: center;
+  /*background: #ddd;*/
+  margin-top: 60px;
+}
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+.pointer{
+    cursor: pointer;
+}
+/* Links */
+a:link { text-decoration: none; color: #335577; /*font-weight: bold;*/ padding: 0 5px;}
+a:visited { text-decoration: none; color: #557799; /*font-weight: bold;*/ padding: 0 5px; }
+a:hover, a:active { color: #990000; /*background-color: #eae5cf;*/ }
