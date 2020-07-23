@@ -1,4 +1,4 @@
-function posts(){
+function posts(start,end){
 	var opt = "";
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
@@ -6,12 +6,13 @@ function posts(){
 			var json_obt = JSON.parse(this.responseText);
 			
 			var posts_html = document.getElementById('posts');
+			var more_html = document.getElementById('more');
 			var html_code = "";
 			
 			var website="https://github.com/{user}/{repository}/";
 			var website_package="https://raw.githubusercontent.com/{user}/{repository}/master/";
 			
-			for (i = 0; i < json_obt.posts.length; i = 1) {
+			for (i = start; i < json_obt.posts.length; i++) {
 				
 
 				
@@ -65,13 +66,10 @@ function posts(){
 				html_code+='<h2><a class="pointer" onclick="open_modal('+open_modal+')"> # '+json_obt.posts[i].title+'</a></h2>';
 				html_code+='<div class="fakeimg center"><img class="img" src="'+screenshot+'"></div>';
 				html_code+='<p>'+desc_text+'</p></div>';
-                
 				html_code+='<div id="'+json_obt.posts[i].repository+'" class="modal-window none"><div>';
 				html_code+='<a href="#repo_'+json_obt.posts[i].repository+'" title="Close" class="modal-close">Close</a>';
 				html_code+='hiiiiiiiii';
 				html_code+='</div></div>';
-				
-				
 				
 				html_code+='<!-- '+json_obt.posts[i].title+' -->';
 				
@@ -80,17 +78,19 @@ function posts(){
 				
 				
 				//html_code+=json_obt.posts[i].user;
-				
+				if(i == end){break;}
 			}
             posts_html.innerHTML=html_code;
-
+			var start=end+1;
+			var end=end+5;
+            more_html.innerHTML='<button onclick="posts('+start+','+end+');">next</button>'
 	}
 	};
 	xmlhttp.open("GET", "content/json/json.json", true);
 	xmlhttp.send();
 }
 
-posts();
+posts(0,3);
 
 //start
 function open_modal(hachtag){
