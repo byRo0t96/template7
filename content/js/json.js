@@ -12,6 +12,11 @@ function posts(start,end){
 			var website="https://github.com/{user}/{repository}/";
 			var website_package="https://raw.githubusercontent.com/{user}/{repository}/master/";
 			
+			
+			if (start !== 0){
+				hach("posts");
+			}
+			
 			for (i = start; i < json_obt.posts.length; i++) {
 				
 
@@ -68,7 +73,7 @@ function posts(start,end){
 				html_code+='<p>'+desc_text+'</p></div>';
 				html_code+='<div id="'+json_obt.posts[i].repository+'" class="modal-window none"><div>';
 				html_code+='<a href="#repo_'+json_obt.posts[i].repository+'" title="Close" class="modal-close">Close</a>';
-				html_code+='hiiiiiiiii';
+				html_code+='<a href="'+r_link+'">download free version</a>';
 				html_code+='</div></div>';
 				
 				html_code+='<!-- '+json_obt.posts[i].title+' -->';
@@ -81,16 +86,24 @@ function posts(start,end){
 				if(i == end){break;}
 			}
             posts_html.innerHTML=html_code;
-			var start=end+1;
-			var end=end+5;
-            more_html.innerHTML='<button onclick="posts('+start+','+end+');">next</button>'
+			var start2 = end+1;
+			var end2 = end+2;
+			
+			
+			if(json_obt.posts.length+2 < end2){
+				more_html.innerHTML='<br><br><center><div class="no_more">no more...</div><br><button class="next" onclick="posts(0,2);">back</button></center>';
+			}else{
+				more_html.innerHTML='<br><br><center><button class="next" onclick="posts('+start2+','+end2+');">next</button></center>';
+			}
+			
+            
 	}
 	};
 	xmlhttp.open("GET", "content/json/json.json", true);
 	xmlhttp.send();
 }
 
-posts(0,3);
+posts(0,2);
 
 //start
 function open_modal(hachtag){
@@ -100,3 +113,8 @@ function open_modal(hachtag){
 	document.getElementById(hachtag).style.display = "block";
 }
 //end
+
+function hach(hachtag){
+	var url = '#' + hachtag;
+	window.location.href = url;
+}
