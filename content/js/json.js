@@ -74,7 +74,7 @@ function posts(start,end){
 				html_code+='<p>'+desc_text+'</p></div>';
 				html_code+='<div id="'+json_obt.posts[i].repository+'" class="modal-window none"><div>';
 				html_code+='<a href="#repo_'+json_obt.posts[i].repository+'" title="Close" class="modal-close">Close</a>';
-				html_code+='<br><br><a href="'+r_link+'"><i class="fa fa-download"></i> Download free version</a>';
+				html_code+='<br><br><a href="'+r_link+'"><i class="fa fa-download"></i> Free version</a>';
 				html_code+='<!--br><br><a href="'+r_link+'"><i class="fa fa-credit-card-alt"></i> Buy pro version</a-->';
 				html_code+='<br><br><a href="'+donate+'"><i class="fa fa-usd"></i> Donate</a>';
 				html_code+='</div></div>';
