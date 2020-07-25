@@ -11,6 +11,7 @@ function posts(start,end){
 			
 			var website="https://github.com/{user}/{repository}/";
 			var website_package="https://raw.githubusercontent.com/{user}/{repository}/master/";
+			var donate="https://money.yandex.ru/to/410018413831485";
 			
 			
 			if (start !== 0){
@@ -65,7 +66,7 @@ function posts(start,end){
 				}
 				
 				var open_modal = "'"+json_obt.posts[i].repository+"'";
-				
+				//html_code+=document.getElementById("posts").html();
 				html_code+='<!-- '+json_obt.posts[i].title+' -->';
 				html_code+='<div id="repo_'+json_obt.posts[i].repository+'" class="card php">';
 				html_code+='<h2><a class="pointer" onclick="open_modal('+open_modal+')"> # '+json_obt.posts[i].title+'</a></h2>';
@@ -73,7 +74,9 @@ function posts(start,end){
 				html_code+='<p>'+desc_text+'</p></div>';
 				html_code+='<div id="'+json_obt.posts[i].repository+'" class="modal-window none"><div>';
 				html_code+='<a href="#repo_'+json_obt.posts[i].repository+'" title="Close" class="modal-close">Close</a>';
-				html_code+='<a href="'+r_link+'">download free version</a>';
+				html_code+='<br><br><a href="'+r_link+'"><i class="fa fa-download"></i> Download free version</a>';
+				html_code+='<!--br><br><a href="'+r_link+'"><i class="fa fa-credit-card-alt"></i> Buy pro version</a-->';
+				html_code+='<br><br><a href="'+donate+'"><i class="fa fa-usd"></i> Donate</a>';
 				html_code+='</div></div>';
 				
 				html_code+='<!-- '+json_obt.posts[i].title+' -->';
@@ -87,11 +90,11 @@ function posts(start,end){
 			}
             posts_html.innerHTML=html_code;
 			var start2 = end+1;
-			var end2 = end+2;
+			var end2 = end+5;
 			
 			
-			if(json_obt.posts.length+2 < end2){
-				more_html.innerHTML='<br><br><center><div class="no_more">no more...</div><br><button class="next" onclick="posts(0,2);">back</button></center>';
+			if(json_obt.posts.length+5 < end2){
+				more_html.innerHTML='<br><br><center><div class="no_more">no more...</div><br><!--button class="next" onclick="posts(0,5);">back</button--></center>';
 			}else{
 				more_html.innerHTML='<br><br><center><button class="next" onclick="posts('+start2+','+end2+');">next</button></center>';
 			}
@@ -103,7 +106,7 @@ function posts(start,end){
 	xmlhttp.send();
 }
 
-posts(0,2);
+posts(0,5);
 
 //start
 function open_modal(hachtag){

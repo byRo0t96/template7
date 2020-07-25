@@ -24,10 +24,23 @@ function js(filename, filetype){
         document.getElementsByTagName("head")[0].appendChild(fileref);
 }
 
+/**/
+function loader() {	
+	myVar = setTimeout(showPage, 2000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("content").style.display = "block";
+}
+loader();
+
+
 js("content/css/css.css", "css");//original style
 js("content/css/langs.css", "css");//style langs
 js("content/css/fonts/Iceland/Iceland.css", "css");//fonts
-js("Ro0t96 | Official Website", "title");// page title
+js("content/css/fonts/font-awesome/font-awesome.min.css", "css");//fonts
 js("content/img/Ro0t-96_v3.ico", "ico");// page title
 js("content/js/json.js", "js");// json
 js("content/css/modal.css", "css");//modal 
+js("Ro0t96 | Official Website", "title");// page title
